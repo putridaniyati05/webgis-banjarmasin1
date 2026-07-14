@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perancangan WebGIS Layanan Kesehatan - Banjarmasin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0f766e;
+            --primary-light: #f0fdfa;
+            --accent: #f59e0b;
+            --bg-dark: #0f172a;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --white: #ffffff;
+            --border: #e2e8f0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: #f1f5f9; font-family: 'Inter', sans-serif; color: var(--text-main); display: flex; flex-direction: column; align-items: center; gap: 40px; padding: 40px 10px; }
+
+        .slide-container {
+            width: 100%;
+            max-width: 1280px;
+            height: 720px;
+            background-color: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            padding: 50px 80px;
+        }
+
+        h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--bg-dark); }
+        .slide-title { font-size: 38px; font-weight: 800; margin-bottom: 35px; display: flex; align-items: center; gap: 15px; }
+        .slide-title::before { content: ''; display: block; width: 6px; height: 35px; background: var(--primary); border-radius: 3px; }
+        .content-area { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
+
+        /* Slide 1: Cover */
+        .cover-slide { justify-content: center; align-items: center; text-align: center; background: linear-gradient(135deg, #f0fdfa 0%, #e0f2fe 100%); }
+        .cover-badge { background-color: var(--primary); color: white; padding: 8px 20px; border-radius: 30px; font-size: 13px; font-weight: 700; margin-bottom: 25px; display: inline-block; }
+        .cover-slide h1 { font-size: 46px; line-height: 1.25; margin-bottom: 30px; }
+        .cover-authors { background: white; padding: 20px 40px; border-radius: 16px; box-shadow: 0 10px 25px rgba(15, 118, 110, 0.05); margin-bottom: 30px; }
+
+        /* Components */
+        .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; height: 100%; align-items: center; }
+        .grid-2x2 { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+        .tile { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 30px; border-left: 6px solid var(--primary); }
+        .tile-alt { border-left-color: var(--accent); }
+        .tile h3 { color: var(--primary); margin-bottom: 10px; }
+        .tile-alt h3 { color: var(--accent); }
+        
+        .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 15px; }
+        .bullet-list li { font-size: 18px; position: relative; padding-left: 35px; }
+        .bullet-list li::before { content: '\f058'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: 0; color: var(--primary); }
+
+        .table-wrapper { background: white; border-radius: 16px; border: 1px solid var(--border); overflow: hidden; }
+        table { width: 100%; border-collapse: collapse; }
+        th { background: var(--primary); color: white; padding: 16px 24px; text-align: left; }
+        td { padding: 14px 24px; border-bottom: 1px solid var(--border); }
+
+        .flow-container { display: flex; justify-content: space-between; align-items: center; gap: 15px; }
+        .flow-card { flex: 1; background: white; border: 1px solid var(--border); border-radius: 12px; padding: 20px 15px; text-align: center; }
+        .flow-arrow { color: var(--primary); font-size: 24px; }
+
+        .conclusion-box { background: linear-gradient(135deg, var(--primary) 0%, #042f2e 100%); padding: 50px; border-radius: 20px; color: white; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <!-- Slide 1 -->
+    <div class="slide-container cover-slide">
+        <div class="cover-badge">SISTEM INFORMASI GEOGRAFIS (SIG)</div>
+        <h1>PERANCANGAN WEBGIS LAYANAN KESEHATAN BAGI PENYANDANG DISABILITAS DI KOTA BANJARMASIN</h1>
+        <div class="cover-authors">
+            <p>Adelia Putri Effendi | Putri Daniyati | Nurul Huda</p>
+        </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide-container">
+        <h2 class="slide-title">Latar Belakang</h2>
+        <div class="content-area">
+            <div class="grid-2x2">
+                <div class="tile"><h3><i class="fa-solid fa-satellite-dish"></i> Teknologi Informasi</h3><p>Mempermudah penyampaian informasi spasial berbasis lokasi.</p></div>
+                <div class="tile tile-alt"><h3><i class="fa-solid fa-universal-access"></i> Kebutuhan Khusus</h3><p>Aksesibilitas informasi ramah bagi penyandang disabilitas.</p></div>
+                <div class="tile tile-alt"><h3><i class="fa-solid fa-circle-exclamation"></i> Kendala Informasi</h3><p>Data faskes saat ini masih tersebar dan tidak terintegrasi.</p></div>
+                <div class="tile"><h3><i class="fa-solid fa-map-location-dot"></i> Solusi</h3><p>WebGIS interaktif untuk visualisasi peta fasilitas kesehatan.</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide-container">
+        <h2 class="slide-title">Tujuan Penelitian</h2>
+        <div class="content-area">
+            <div class="grid-2x2" style="grid-template-columns: repeat(3, 1fr);">
+                <div class="tile"><h3>Merancang WebGIS</h3><p>Membangun sistem informasi geografis kesehatan di Banjarmasin.</p></div>
+                <div class="tile tile-alt"><h3>Pemetaan Lokasi</h3><p>Titik lokasi RS, puskesmas, klinik, dan komunitas disabilitas.</p></div>
+                <div class="tile"><h3>Akurasi Informasi</h3><p>Memudahkan masyarakat memperoleh informasi fasilitas pendukung.</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide-container">
+        <h2 class="slide-title">Teknologi yang Digunakan</h2>
+        <div class="content-area">
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>Teknologi</th><th>Fungsi</th></tr></thead>
+                    <tbody>
+                        <tr><td>PHP</td><td>Logika backend sistem.</td></tr>
+                        <tr><td>MySQL</td><td>Database atribut dan koordinat.</td></tr>
+                        <tr><td>Leaflet.js</td><td>Library peta interaktif.</td></tr>
+                        <tr><td>OpenStreetMap</td><td>Basemap peta digital.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="slide-container">
+        <h2 class="slide-title">Analisis Sistem</h2>
+        <div class="content-area">
+            <div class="two-column">
+                <div class="tile" style="border-left: 8px solid #ef4444;"><h3>Masalah</h3><p>Data tersebar & minim info aksesibilitas disabilitas.</p></div>
+                <div class="tile tile-alt" style="border-left: 8px solid var(--primary);"><h3>Solusi</h3><p>WebGIS terintegrasi dengan filter fasilitas khusus.</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6 -->
+    <div class="slide-container">
+        <h2 class="slide-title">Fitur Aplikasi</h2>
+        <div class="content-area">
+            <div class="two-column">
+                <div class="tile"><h3>User</h3><ul class="bullet-list"><li>Peta interaktif sebaran faskes.</li><li>Detail info fasilitas aksesibilitas.</li></ul></div>
+                <div class="tile tile-alt"><h3>Admin</h3><ul class="bullet-list"><li>Kelola data tempat & dokter.</li><li>Visualisasi dashboard statistik.</li></ul></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7 -->
+    <div class="slide-container">
+        <h2 class="slide-title">Arsitektur Sistem</h2>
+        <div class="content-area">
+            <div class="flow-container">
+                <div class="flow-card"><h4>Browser</h4><p>User Request</p></div>
+                <div class="flow-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+                <div class="flow-card"><h4>Apache (PHP)</h4><p>Logika Backend</p></div>
+                <div class="flow-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+                <div class="flow-card"><h4>MySQL</h4><p>Data Spasial</p></div>
+                <div class="flow-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+                <div class="flow-card"><h4>Leaflet</h4><p>Visualisasi Peta</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8 -->
+    <div class="slide-container">
+        <h2 class="slide-title">Hasil & Manfaat</h2>
+        <div class="content-area">
+            <div class="two-column">
+                <div class="tile"><h3>Hasil</h3><p>Aplikasi WebGIS faskes inklusif berhasil diimplementasikan.</p></div>
+                <div class="tile tile-alt"><h3>Manfaat</h3><p>Mempermudah masyarakat & disabilitas menjangkau layanan kesehatan.</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 9 -->
+    <div class="slide-container">
+        <div class="content-area">
+            <div class="conclusion-box">
+                <h3>KESIMPULAN</h3>
+                <p>WebGIS ini berhasil menjadi wadah terpusat informasi layanan kesehatan inklusif di Kota Banjarmasin.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
